@@ -2,6 +2,56 @@
 
 **Candidate ID:** ai-intern-0098
 
+## My answers
+
+Run `python3 score_updated.py` to reproduce every number below. Full reasoning is in
+[writeup.md](writeup.md), and tool use is in [ai-use.txt](ai-use.txt).
+
+| Field | Answer |
+|---|---|
+| accuracy_model_a | 84.0% (126/150) |
+| accuracy_model_b | 82.0% (123/150) |
+| duplicate_question_ids | q027, q038, q049, q050, q051, q054 |
+| wrong_answer_key_ids | q002, q014, q033 |
+
+**What was wrong with the original measurement**
+- `score.py` uses exact string matching. 78 of model-b's 168 responses are text
+  (`Sure! 8143 - 4341 equals 3,802.`, `**2131**`), so they were all marked wrong even when
+  the number was right. model-a always answered with a bare number.
+- Three answer-key entries are wrong: q002 (3802, not 3702), q014 (7373, not 7374) and
+  q033 (18698, not 18697).
+- Six questions appear twice under different IDs, so they were counted twice.
+- model-a ran at temperature 0.0 and model-b at 0.7.
+
+**What I changed, and the numbers after each change**
+
+| Step | model-a | model-b |
+|---|---|---|
+| Original `score.py` | 80.4% | 39.9% |
+| Correct answer key | 85.7% | 42.3% |
+| Extract the number from text responses | 85.7% | 78.0% |
+| Drop duplicate questions (final) | 84.0% | 82.0% |
+
+**Is model-a better than model-b?** Not shown. The gap is 3 answers out of 150. model-b's
+three runs score 84.0%, 82.0% and 80.0%, a range that covers model-a's 84.0%, and in run 1
+they tie. I'm fairly confident the original "clearly better" claim is wrong, but I can't say
+which model is better.
+
+**What the numbers do not prove**
+- Anything about model-a's consistency: at temperature 0.0 its three runs are identical,
+  so they are effectively one run.
+- How the models compare at the same temperature, since they were never run that way.
+- Anything beyond these 50 small addition, subtraction and multiplication questions.
+
+**Assumptions**
+- The answer is the last number in a response.
+- For duplicates, the first ID is kept and the later copies are listed.
+- Accuracy is pooled across all three runs.
+
+---
+
+## The original brief
+
 ## The situation
 
 A colleague ran two language models, `model-a` and `model-b`, on the same set of arithmetic

@@ -1,16 +1,28 @@
 # Fill in every line. Percentages to one decimal place, IDs separated by commas.
 # Say in writeup.md how you arrived at each one.
 candidate_id: ai-intern-0098
-# Accuracy: all 3 runs pooled, scored against answers computed from each question,
-# numbers extracted from text responses (last number, commas removed),
-# duplicate questions counted once (50 questions x 3 runs = 150 per model).
+
+# Accuracy, from `python3 score_updated.py`:
+#   - all 3 runs pooled
+#   - scored against the correct answer to each question
+#   - number taken from text responses (last number, commas removed)
+#   - each duplicate question counted once: 50 questions x 3 runs = 150 per model
+#
+# model-a: 126/150. The same in every run (temperature 0.0).
 accuracy_model_a: 84.0
-# 126/150. Identical in every run (temperature 0.0).
+# model-b: 123/150. Runs 1, 2, 3: 84.0, 82.0, 80.0 (temperature 0.7).
 accuracy_model_b: 82.0
-# 123/150. Runs: 84.0, 82.0, 80.0 (temperature 0.7).
+
+# Later IDs that repeat an earlier question (earlier ID kept):
+#   q027 = q003    q038 = q024    q049 = q028
+#   q050 = q044    q051 = q029    q054 = q030
 duplicate_question_ids: q027,q038,q049,q050,q051,q054
-# Same question text as q003, q024, q028, q044, q029, q030 respectively; the earlier ID is kept.
+
+# Key entries that are wrong:
+#   q002: 8143 - 4341 = 3802  (key says 3702)
+#   q014: 3294 + 4079 = 7373  (key says 7374)
+#   q033: 9018 + 9680 = 18698 (key says 18697)
 wrong_answer_key_ids: q002,q014,q033
-# q002: 8143-4341=3802 (key 3702); q014: 3294+4079=7373 (key 7374); q033: 9018+9680=18698 (key 18697).
+
 # Optional, not marked: a link to your GitHub profile or other public code.
-github_profile:
+github_profile: https://github.com/Mhervin47
