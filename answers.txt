@@ -1,0 +1,16 @@
+# Fill in every line. Percentages to one decimal place, IDs separated by commas.
+# Say in writeup.md how you arrived at each one.
+candidate_id: ai-intern-0098
+# Accuracy: all 3 runs pooled, scored against answers computed from each question,
+# numbers extracted from text responses (last number, commas removed),
+# duplicate questions counted once (50 questions x 3 runs = 150 per model).
+accuracy_model_a: 84.0
+# 126/150. Identical in every run (temperature 0.0).
+accuracy_model_b: 82.0
+# 123/150. Runs: 84.0, 82.0, 80.0 (temperature 0.7).
+duplicate_question_ids: q027,q038,q049,q050,q051,q054
+# Same question text as q003, q024, q028, q044, q029, q030 respectively; the earlier ID is kept.
+wrong_answer_key_ids: q002,q014,q033
+# q002: 8143-4341=3802 (key 3702); q014: 3294+4079=7373 (key 7374); q033: 9018+9680=18698 (key 18697).
+# Optional, not marked: a link to your GitHub profile or other public code.
+github_profile:

@@ -1,0 +1,21 @@
+Tools used
+
+1. Claude Code (Anthropic, Claude Opus model), as an AI assistant inside VS Code.
+   I used it heavily. It:
+   - explained the README and what the task asks for
+   - wrote a step-by-step plan for the task
+   - ran checks on the CSV files that found the problems: model-b's text responses,
+     the three wrong answer-key entries, the six duplicate questions, and the different
+     temperatures for the two models
+   - computed the corrected accuracies
+   - filled in answers.txt and drafted writeup.md
+   - wrote score_updated.py, then simplified it at my request
+
+2. VS Code: to open and read the CSV files and edit the submission files.
+
+3. Python 3: to run score.py and score_updated.py.
+
+What I did myself
+- Read results.csv and noticed that some responses were text, not bare numbers.
+- Directed the work and asked for the script to be made simpler.
+- Read score_updated.py, ran it, and checked its output against answers.txt and writeup.md.
